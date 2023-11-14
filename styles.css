@@ -27,7 +27,7 @@ div.top {
     display: flex;
     justify-content: space-between;
 }
-div.crypto {
+div.crypto-top {
     display: flex;
     gap: 0.8em;
     font-size: 1.3rem;
@@ -37,4 +37,7 @@ img {
 }
 h1.time {
   text-align: center;
+}
+div#crypto-prices {
+    margin-left: 1em;
 }

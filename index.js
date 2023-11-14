@@ -19,8 +19,24 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
         console.log(data)
         document.getElementById('crypto-icon').src = `${data.image.small}`
         document.getElementById('crypto-name').textContent = data.name
+        document.getElementById('crypto-prices').innerHTML = `
+        <p> 🎯: €${data.market_data.current_price.eur}</p>
+        <p> 👆: €${data.market_data.high_24h.eur}</p>
+        <p> 👇: €${data.market_data.low_24h.eur}</p>
+        `
     })
     .catch(err => {
         console.error(err)
     })
+
+    setInterval(getCurrentTime, 1000);
+
+    function getCurrentTime() {
+    const date = new Date();
+    document.querySelector('h1').textContent =  date.toLocaleTimeString("en-us", {timeStyle: "short"})
+    }
+    navigator.geolocation.getCurrentPosition(position => {
+        console.log(position)
+    })
+
 
