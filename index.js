@@ -16,7 +16,6 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
     fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         document.getElementById('crypto-icon').src = `${data.image.small}`
         document.getElementById('crypto-name').textContent = data.name
         document.getElementById('crypto-prices').innerHTML = `
@@ -48,8 +47,8 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
             console.log(data)
             document.getElementById('weather').innerHTML = `
                 <div class="weather-top">
-                    <img src= "https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" class="contain" />
-                    <h1> ${Math.round(data.main.temp)} º</h1>
+                    <img src= "https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />
+                    <h1> ${Math.round(data.main.temp)}°</h1>
                 </div>
                 <p> ${data.name}</p>
             `
