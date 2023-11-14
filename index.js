@@ -33,10 +33,28 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 
     function getCurrentTime() {
     const date = new Date();
-    document.querySelector('h1').textContent =  date.toLocaleTimeString("en-us", {timeStyle: "short"})
+    document.querySelector('h1.time').textContent =  date.toLocaleTimeString("en-us", {timeStyle: "short"})
     }
+
     navigator.geolocation.getCurrentPosition(position => {
-        console.log(position)
+        fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`)
+        .then(res => {
+            if(!res.ok){
+                throw Error("Weather data not available")
+            }
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+            document.getElementById('weather').innerHTML = `
+                <div class="weather-top">
+                    <img src= "https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" class="contain" />
+                    <h1> ${Math.round(data.main.temp)} º</h1>
+                </div>
+                <p> ${data.name}</p>
+            `
+        })
+        .catch(err => console.error(err))
     })
 
 

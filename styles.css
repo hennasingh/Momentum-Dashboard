@@ -41,3 +41,16 @@ h1.time {
 div#crypto-prices {
     margin-left: 1em;
 }
+
+.weather-top {
+    display:flex;
+}
+.weather-top img {
+    width: 50px;
+}
+
+div#weather p {
+    margin:0;
+   text-align: center;
+   margin-top:-0.8em;
+}
